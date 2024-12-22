@@ -33,7 +33,7 @@ interface MapViewProps {
 }
 
 export function MapView({ shops, onShopSelect }: MapViewProps) {
-  let customMarker = divIcon({
+  const customMarker = divIcon({
     html: renderToString(
       <div className="text-2xl rounded-full border-brown-600 bg-white p-1">
         <CiCoffeeCup className="text-orange-800" />

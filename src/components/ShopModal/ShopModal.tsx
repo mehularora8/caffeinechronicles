@@ -1,4 +1,4 @@
-import { X, Star, MapPin, Zap, Coffee, Navigation } from 'lucide-react';
+import { X, MapPin, Zap, Coffee } from 'lucide-react';
 import { CoffeeShop } from '../../types/coffee-shop';
 
 interface ShopModalProps {
@@ -8,7 +8,7 @@ interface ShopModalProps {
 
 export function ShopModal({ shop, onClose }: ShopModalProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
           <div className='flex items-center space-x-4'>

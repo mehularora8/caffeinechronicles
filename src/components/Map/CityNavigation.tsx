@@ -35,6 +35,7 @@ export function CityNavigation() {
             "hover:bg-gray-50 hover:border-gray-300",
             "transition-all duration-200",
             "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
+            "flex flex-col", "lg:flex-row", "xl:flex-row"
           )}
         >
           {city.name}
