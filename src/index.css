@@ -5,3 +5,17 @@
 .leaflet-control { z-index: 0 !important}
 .leaflet-pane { z-index: 0 !important}
 .leaflet-top, .leaflet-bottom {z-index: 0 !important}
+
+.custom-coffee-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custom-coffee-marker > div {
+    transition: transform 0.2s ease;
+  }
+  
+  .custom-coffee-marker > div:hover {
+    transform: scale(1.1);
+  }

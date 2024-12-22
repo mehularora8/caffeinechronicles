@@ -4,10 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'vintage-blue': '#01204E', // or use rgb(1, 32, 78)
-        // You could also name it more specifically:
-        // 'navy': '#01204E',
-        // 'primary': '#01204E',
+        'vintage-blue': '#01204E', 
+        'vintage-cyan': '#5F9EA0',
       }
     },
     fontFamily: {

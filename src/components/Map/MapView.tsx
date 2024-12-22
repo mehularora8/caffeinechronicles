@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import { CoffeeShop } from '../../types/coffee-shop';
 import { divIcon } from 'leaflet';
+import { renderToString } from 'react-dom/server';
+import { CiCoffeeCup } from "react-icons/ci";
 import 'leaflet/dist/leaflet.css';
+import { CityNavigation } from './CityNavigation';
 
 function LocationFinder() {
   const map = useMap();
@@ -30,12 +33,15 @@ interface MapViewProps {
 }
 
 export function MapView({ shops, onShopSelect }: MapViewProps) {
-  const customMarker = divIcon({
-    className: 'bg-transparent',
-    html: `
-      <div class="w-4 h-4 bg-vintage-blue rounded-full border-2 border-white shadow-lg transform -translate-x-1/2 -translate-y-1/2"></div>
-    `,
-    iconSize: [12, 12],
+  let customMarker = divIcon({
+    html: renderToString(
+      <div className="text-2xl rounded-full border-brown-600 bg-white p-1">
+        <CiCoffeeCup className="text-orange-800" />
+      </div>
+    ),
+    className: 'custom-coffee-marker',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
   });
 
   return (
@@ -48,6 +54,7 @@ export function MapView({ shops, onShopSelect }: MapViewProps) {
         attribution='&copy; CartoDB'
         url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
       />
+      <CityNavigation />
       <LocationFinder />
       
       {shops.map((shop) => (

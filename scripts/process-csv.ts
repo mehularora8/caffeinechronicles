@@ -31,8 +31,8 @@ function processCSV() {
             taste: parseInt(record.taste_rating),
         },
         thoughts: {
-            vibe: record.vibe_thoughts,
-            taste: record.taste_thoughts,
+            vibe: record.vibe_thoughts.replace(/^[:.]\s?/g, ''),
+            taste: record.taste_thoughts.replace(/^[:.]\s?/g, ''),
         },
         name: record.name,
         city: record.city,
