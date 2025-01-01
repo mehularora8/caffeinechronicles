@@ -1,4 +1,4 @@
-import { X, Star, MapPin, Zap, Coffee, Navigation } from 'lucide-react';
+import { X, MapPin, Zap, Coffee } from 'lucide-react';
 import { CoffeeShop } from '../../types/coffee-shop';
 
 interface ShopModalProps {
@@ -8,22 +8,27 @@ interface ShopModalProps {
 
 export function ShopModal({ shop, onClose }: ShopModalProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
           <div className='flex items-center space-x-4'>
-            <h2 className="text-2xl font-bold">{shop.name}</h2>
+            <div className='flex flex-col space-y-2 items-start md:flex-row md:items-center lg:flex-row lg:items-center lg:space-x-2 md:space-x-2'>
+              <h2 className="text-2xl font-bold">{shop.name}</h2>
+              <div className='rounded-md bg-vintage-cyan text-white px-2 py-1 text-sm'>
+                {shop.visitAgain}
+              </div>
+            </div>
           </div>
           
           <button
             onClick={onClose}
             className="hover:bg-gray-100 rounded-full"
           >
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6"/>
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="px-6 pb-6 pt-2 space-y-6">
           {/* Images */}
           <div className="grid grid-cols-2 gap-4">
             {
@@ -40,7 +45,7 @@ export function ShopModal({ shop, onClose }: ShopModalProps) {
           {/* Contact & Location */}
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <MapPin className="w-5 h-5 text-gray-500" />
+              <MapPin className="w-6 h-6 text-vintage-cyan" />
               <span>{shop.address}</span>
             </div>
           </div>
@@ -49,7 +54,7 @@ export function ShopModal({ shop, onClose }: ShopModalProps) {
           <div className="flex flex-col items-start">
             <div className='flex flex-col mb-6'>
               <div className='flex items-center space-x-2'>
-                <Zap className={"w-6 h-6 text-yellow-500"} />
+                <Zap className={"w-6 h-6 text-vintage-cyan"} />
                 <span className="text-lg font-semibold">{shop.ratings.vibe} / 5</span>
               </div>
               {/* Vibe thoughts */}
@@ -60,11 +65,11 @@ export function ShopModal({ shop, onClose }: ShopModalProps) {
             
             <div className='flex flex-col mb-6'>
               <div className='flex items-center space-x-2'>
-                <Coffee className={"w-6 h-6 text-yellow-500"} />
+                <Coffee className={"w-6 h-6 text-vintage-cyan"} />
                 <span className="text-lg font-semibold">{shop.ratings.taste} / 5</span>
               </div>
               {/* Taste thoughts */}
-              <div className='flex items-center space-x-2'>
+              <div className='flex items-center space-x-2 text-slate-800'>
                 <span className="text-sm">{shop.thoughts.taste}</span>
               </div>
             </div>
