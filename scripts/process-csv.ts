@@ -11,10 +11,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Read and process CSV during build
-function processCSV() {
+function processCSV(csv_path: string) {
   try {
     // Read CSV file
-    const csvPath = path.join(__dirname, '../data/cafes_parsed.csv');
+    const csvPath = path.join(__dirname, csv_path);
     const fileContent = readFileSync(csvPath, 'utf-8');
     
     // Parse CSV
@@ -37,7 +37,7 @@ function processCSV() {
         name: record.name,
         city: record.city,
         visitAgain: record.visit_again,
-        coordinates: JSON.parse(record.coordinates.replace(/'/g, '"')),
+        coordinates: record.coordinates ? JSON.parse(record.coordinates.replace(/'/g, '"')) : null,
         address: record.location,
     }));
 
@@ -52,4 +52,4 @@ function processCSV() {
   }
 }
 
-processCSV();
+processCSV('../data/cafes_fully_processed_20250910.csv');

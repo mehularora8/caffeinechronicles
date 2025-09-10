@@ -57,17 +57,19 @@ export function MapView({ shops, onShopSelect }: MapViewProps) {
       <CityNavigation />
       <LocationFinder />
       
-      {shops.map((shop) => (
-        <Marker
-          key={shop.id}
-          position={[shop.coordinates.lat, shop.coordinates.lon]}
-          eventHandlers={{
-            click: () => onShopSelect(shop),
-          }}
-          icon={customMarker}
-        >
-        </Marker>
-      ))}
+      {shops
+        .filter((shop) => shop.coordinates !== null)
+        .map((shop) => (
+          <Marker
+            key={shop.id}
+            position={[shop.coordinates!.lat, shop.coordinates!.lon]}
+            eventHandlers={{
+              click: () => onShopSelect(shop),
+            }}
+            icon={customMarker}
+          >
+          </Marker>
+        ))}
     </MapContainer>
   );
 }

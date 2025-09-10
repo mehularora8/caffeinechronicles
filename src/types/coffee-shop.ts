@@ -7,7 +7,7 @@ export interface CoffeeShop {
   coordinates: {
     lat: number;
     lon: number;
-  };
+  } | null;
   hours?: {
     [key: string]: string;
   };
